@@ -13,7 +13,7 @@ function fizzBuzz(print) {
 }
 
 
-const INCREMENT = (NUM) => fn => x => fn(NUM(fn)(x))
+const INCREMENT = NUM => fn => x => fn(NUM(fn)(x))
 const ADD       = NUM1 => NUM2 => NUM2(INCREMENT)(NUM1)
 
 const ZERO  = (fn) => x => x,
