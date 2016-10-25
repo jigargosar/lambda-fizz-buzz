@@ -12,17 +12,17 @@ function fizzBuzz(print) {
 
 }
 
-const ZERO  = (fn) => x => x
+const ZERO      = (fn) => x => x
 const INCREMENT = NUM => fn => x => fn(NUM(fn)(x))
 const ADD       = NUM1 => NUM2 => NUM2(INCREMENT)(NUM1)
-const MULTIPLY = m=>n=>n(ADD(m))(ZERO)
+const MULTIPLY  = m=>n=>n(ADD(m))(ZERO)
 
 
 const ONE   = INCREMENT(ZERO);
 const TWO   = INCREMENT(ONE);
 const THREE = INCREMENT(TWO);
 const FIVE  = ADD(TWO)(THREE);
-const TEN  = MULTIPLY(FIVE)(TWO);
+const TEN   = MULTIPLY(FIVE)(TWO);
 
 
 // ======= TESTS ========
