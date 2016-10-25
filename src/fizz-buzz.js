@@ -20,14 +20,18 @@ const ZERO  = (fn, x) => x,
 
 
 // ======= TESTS ========
+const A = require("assert");
 
 const log = console.log.bind(console)
 
 // fizzBuzz(log)
-const toInteger = NUMBER => NUMBER(n => n + 1, 0)
+const toInteger = NUMBER => NUMBER(n => n + 1, 0);
 
-log(toInteger(ZERO))
-log(toInteger(ONE))
-log(toInteger(TWO))
-log(toInteger(THREE))
+
+const actualNumbers = [ZERO, ONE, TWO, THREE].map(toInteger)
+A.deepEqual(actualNumbers, [0, 1, 2, 3])
+log(actualNumbers)
+
+
+
 
