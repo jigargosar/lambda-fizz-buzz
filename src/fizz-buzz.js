@@ -17,6 +17,9 @@ const INCREMENT = NUM => fn => x => fn(NUM(fn)(x))
 const ADD       = NUM1 => NUM2 => NUM2(INCREMENT)(NUM1)
 const MULTIPLY  = m=>n=>n(ADD(m))(ZERO)
 
+const DECREMENT = NUMBER=>f=>x=>
+    NUMBER(g=>h=>h(g(f)))(y=>x)(y=>y)
+
 
 const ONE   = INCREMENT(ZERO);
 const TWO   = INCREMENT(ONE);
