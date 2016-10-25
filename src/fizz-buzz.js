@@ -12,15 +12,17 @@ function fizzBuzz(print) {
 
 }
 
-
+const ZERO  = (fn) => x => x
 const INCREMENT = NUM => fn => x => fn(NUM(fn)(x))
 const ADD       = NUM1 => NUM2 => NUM2(INCREMENT)(NUM1)
+const MULTIPLY = m=>n=>n(ADD(m))(ZERO)
 
-const ZERO  = (fn) => x => x,
-      ONE   = INCREMENT(ZERO),
-      TWO   = INCREMENT(ONE),
-      THREE = INCREMENT(TWO),
-      FIVE  = ADD(TWO)(THREE)
+
+const ONE   = INCREMENT(ZERO);
+const TWO   = INCREMENT(ONE);
+const THREE = INCREMENT(TWO);
+const FIVE  = ADD(TWO)(THREE);
+const TEN  = MULTIPLY(FIVE)(TWO);
 
 
 // ======= TESTS ========
@@ -30,9 +32,9 @@ const A   = require("assert"),
 const toInteger = NUM => NUM(n => n + 1)(0);
 
 
-const actualNumbers = [ZERO, ONE, TWO, THREE, FIVE].map(toInteger)
+const actualNumbers = [ZERO, ONE, TWO, THREE, FIVE, TEN].map(toInteger)
 
-A.deepEqual(actualNumbers, [0, 1, 2, 3, 5])
+A.deepEqual(actualNumbers, [0, 1, 2, 3, 5, 10])
 
 log(actualNumbers)
 
