@@ -20,6 +20,15 @@ const MULTIPLY  = m=>n=>n(ADD(m))(ZERO)
 const DECREMENT = NUMBER=>f=>x=>
     NUMBER(g=>h=>h(g(f)))(y=>x)(y=>y)
 
+const SUBTRACT = m=>n=>n(DECREMENT)(m)
+
+//Z Combinator
+const Z = f=>(x=>f(y=>x(x)(y)))(x=>f(y=>x(x)(y)))
+
+const IS_LESS_OR_EQUAL = m=>n=>IS_ZERO(SUBTRACT(m)(n))
+
+var DIVIDE = Z(f=>m=>n=>IF(IS_LESS_OR_EQUAL(n)(m))(x=>INCREMENT(f(SUBTRACT(m)(n))(n))(x))(ZERO))
+
 
 const ONE   = INCREMENT(ZERO);
 const TWO   = INCREMENT(ONE);
